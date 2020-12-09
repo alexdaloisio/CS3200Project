@@ -2,10 +2,15 @@
 This is our project for the 2020 fall semester of CS3200. (the files in this github are not final and will be replaced later)
 
 The program name is YaTvApp. The youtube video provides a better instruction of how to do this.
+
 Steps for set up:
+
 -Compile the sql file (ddl2.sql) to a sqlite using the programing linked bellow. 
+
 -Use beekeeper studios (or another way to run queries with sqlite) to add the data found in dml.sql to the database.
+
 -Use Ecllipse (or another method) to compile the java source code into a runnable jar program.
+
 -The program can then be run from the command line!
 
 Link to an annotated walkthrough of a system build/installation: https://www.youtube.com/watch?v=0TcAqIIj7xs
