@@ -405,7 +405,8 @@ public class YaTvApp {
 
           } else if (qd.queryType == QueryTypes.Top10Shows) {
             String sql5 = "SELECT distinct show.title as showName, app.name as appName";
-            sql5 = sql5 + " FROM show INNER JOIN video on video.showID = show.showID ";
+            sql5 = sql5 + " FROM show INNER JOIN inSeason on inSeason.showID = show.showID ";
+            sql5 = sql5 + " INNER JOIN video on video.videoID = inSeason.videoID";
             sql5 = sql5 + " INNER JOIN app on video.appName = app.name";
             sql5 = sql5 + " LEFT JOIN userWatchedVideos on userWatchedVideos.videoID = video.videoID";
             sql5 = sql5 + " GROUP BY video.videoID ORDER BY COUNT(userWatchedVideos.userID) DESC LIMIT 10";
@@ -629,7 +630,7 @@ public class YaTvApp {
                 + "FROM User inner join userListShow on User.userID = userListShow.userID\n"
                 + "left join show on userListShow.showID = show.showID\n"
                 + "inner join inSeason on inSeason.showID = show.showID\n"
-                + "inner join video on video.showID = show.showID\n"
+                + "inner join video on video.videoID = inSeason.videoID\n"
                 + "inner join tags on tags.videoID = video.videoID\n"
                 + "WHERE user.firstName =? AND user.lastName =? \n"
                 + "UNION ALL\n"
@@ -637,7 +638,7 @@ public class YaTvApp {
                 + "FROM User inner join userListShow on User.userID = userListShow.userID\n"
                 + "left join show on userListShow.showID = show.showID\n"
                 + "inner join inSeason on inSeason.showID = show.showID\n"
-                + "inner join video on video.showID = show.showID\n"
+                + "inner join video on video.videoID = inSeason.videoID\n"
                 + "inner join tags on tags.videoID = video.videoID\n"
                 + "WHERE user.firstName =? AND user.lastName =? \n"
                 + "Order by videoTitle, videoTags;";
